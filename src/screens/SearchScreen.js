@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, ScrollView } from "react-native";
 import SearchBar from "../components/SearhcBar";
-import useResults from "../hooks/useResults";
+import { API_Search } from "../hooks/useResults";
 import ResultsList from "../components/ResultsList";
 
 const SearchScreen = () => {
     const [term, setTerm] = useState('');
-    const [searchApi, results, errorMessage] = useResults();
+    const [searchApi, results, errorMessage] = API_Search();
 
     const filterResultsByPrice = (price) => {
         return results.filter(result => {
