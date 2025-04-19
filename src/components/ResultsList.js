@@ -5,6 +5,10 @@ import Entypo from '@expo/vector-icons/Entypo';
 import { withNavigation } from "react-navigation";
 
 const ResultsList = ({ title, results, navigation }) => {
+    if(!results.length) {
+        return null;
+    }
+
     return (
         <View>
             <Text style={styles.title}>{title}</Text>
@@ -16,14 +20,14 @@ const ResultsList = ({ title, results, navigation }) => {
                 initialNumToRender={5}
                 maxToRenderPerBatch={5}
                 removeClippedSubviews={true}
-                ListEmptyComponent={() => {
-                    return (
-                        <View style={styles.noResult}>
-                            <Entypo name="emoji-sad" size={40} color="gray" />
-                            <Text>No results found</Text>
-                        </View>
-                    )
-                }}
+                // ListEmptyComponent={() => {
+                //     return (
+                //         <View style={styles.noResult}>
+                //             <Entypo name="emoji-sad" size={40} color="gray" />
+                //             <Text>No results found</Text>
+                //         </View>
+                //     )
+                // }}
                 renderItem={({ item }) => {
                     return (
                         <TouchableOpacity onPress={() => navigation.navigate('ResultsShow', { id: item.id })}>
